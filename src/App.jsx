@@ -312,7 +312,7 @@ const quizLevelOptions = [
     id: 's2',
     label: 'S2',
     zh: '中二',
-    items: indicatorsData.filter(item => !s3QuizIndicatorIds.has(item.id))
+    items: indicatorsData.filter(item => !s3QuizIndicatorIds.has(item.id) || item.id === 'iodine')
   },
   {
     id: 's3',
