@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, HelpCircle, FlaskConical, ArrowRight, CheckCircle2, XCircle, RefreshCw, Beaker as BeakerIcon, ClipboardList, BookMarked, PenTool } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { BookOpen, HelpCircle, FlaskConical, ArrowRight, CheckCircle2, XCircle, RefreshCw, Beaker as BeakerIcon, ClipboardList, PenTool } from 'lucide-react';
 
 // --- DATA & CONTENT ---
 const indicatorsData = [
@@ -109,6 +109,74 @@ const indicatorsData = [
     },
     examEn: "When **iodine solution** is added to **starch**, the colour changes from **brown** to **blue-black**.",
     examZh: "當把 **碘液** 加入 **澱粉** 時，顏色會由 **棕色** 變成 **藍黑色**。"
+  },
+  {
+    id: 'urine_glucose_paper',
+    labType: 'paper',
+    name: { en: 'Glucose Test Paper', zh: '尿糖試紙' },
+    substance: { en: 'Glucose', zh: '葡萄糖' },
+    action: { en: 'Dip', zh: '浸入' },
+    buttonText: { en: 'Dip in Glucose', zh: '浸入葡萄糖' },
+    originalColor: { en: 'Green', zh: '綠色', hex: '#22c55e', topHex: '#4ade80' },
+    finalColor: { en: 'Brown', zh: '棕色', hex: '#92400e', topHex: '#b45309' },
+    dropColor: 'rgba(255,255,255,0.45)',
+    explanation: {
+      en: 'Glucose can be tested using glucose test paper. The colour of the test end of glucose test paper changes from green to brown when glucose is present.',
+      zh: '尿糖試紙可用來檢測葡萄糖。以 Diastix 為例，葡萄糖會使測試端由綠色變為棕色。'
+    },
+    examEn: "When **glucose** is present, the colour of the test end of **glucose test paper** changes from **green** to **brown**.",
+    examZh: "當把 **尿糖試紙** 浸入含有 **葡萄糖** 的樣本中，測試端會由 **綠色** 變為 **棕色**。"
+  },
+  {
+    id: 'filter_paper_lipid',
+    labType: 'filter_paper',
+    name: { en: 'Filter Paper', zh: '濾紙' },
+    substance: { en: 'Lipid', zh: '脂質' },
+    action: { en: 'Add', zh: '加入' },
+    buttonText: { en: 'Add Oil', zh: '滴加食油' },
+    originalColor: { en: 'Opaque Paper', zh: '不透明濾紙', hex: '#f8fafc', topHex: '#ffffff' },
+    finalColor: { en: 'Permanent Translucent Spot', zh: '恆久半透明點', hex: '#dbeafe', topHex: '#eff6ff' },
+    dropColor: 'rgba(250,204,21,0.75)',
+    explanation: {
+      en: 'Lipid can be tested using filter paper. Lipid leaves a permanent translucent spot on the filter paper.',
+      zh: '濾紙可用來檢測脂質。脂質會在濾紙上留下恆久的半透明點。'
+    },
+    examEn: "When **lipid** is present, a **permanent translucent spot** is left on the **filter paper**.",
+    examZh: "當把含有 **脂質** 的樣本加在 **濾紙** 上，紙上會留下 **恆久的半透明點**。"
+  },
+  {
+    id: 'urine_protein_paper',
+    labType: 'paper',
+    name: { en: 'Protein Test Paper', zh: '尿蛋白試紙' },
+    substance: { en: 'Proteins', zh: '蛋白質' },
+    action: { en: 'Dip', zh: '浸入' },
+    buttonText: { en: 'Dip in Protein', zh: '浸入蛋白質' },
+    originalColor: { en: 'Yellow', zh: '黃色', hex: '#fde047', topHex: '#fef08a' },
+    finalColor: { en: 'Green', zh: '綠色', hex: '#22c55e', topHex: '#4ade80' },
+    dropColor: 'rgba(255,255,255,0.45)',
+    explanation: {
+      en: 'Protein can be tested using protein test paper. The colour of the test end of protein test paper changes from yellow to green when protein is present.',
+      zh: '尿蛋白試紙可用來檢測蛋白質。以 Albustix 為例，蛋白質會使測試端由黃色變為綠色。'
+    },
+    examEn: "When **protein** is present, the colour of the test end of **protein test paper** changes from **yellow** to **green**.",
+    examZh: "當把 **尿蛋白試紙** 浸入含有 **蛋白質** 的樣本中，測試端會由 **黃色** 變為 **綠色**。"
+  },
+  {
+    id: 'dcpip',
+    labType: 'beaker',
+    name: { en: 'DCPIP Solution', zh: 'DCPIP 溶液' },
+    substance: { en: 'Vitamin C', zh: '維生素C' },
+    action: { en: 'Add', zh: '加入' },
+    buttonText: { en: 'Add Vitamin C', zh: '加入維生素C' },
+    originalColor: { en: 'Blue', zh: '藍色', hex: '#2563eb', topHex: '#60a5fa' },
+    finalColor: { en: 'Colourless', zh: '無色', hex: 'rgba(255,255,255,0.12)', topHex: 'rgba(255,255,255,0.25)' },
+    dropColor: 'rgba(255,255,255,0.55)',
+    explanation: {
+      en: 'Vitamin C can be tested using DCPIP solution. The colour of DCPIP solution changes from blue to colourless when vitamin C is present.',
+      zh: 'DCPIP 溶液是一種藍色染劑，可用來檢測維生素C。維生素C會使 DCPIP 溶液褪色，由藍色變為無色。'
+    },
+    examEn: "When **vitamin C** is present, the colour of **DCPIP solution** changes from **blue** to **colourless**.",
+    examZh: "當把 **維生素C** 加入 **DCPIP 溶液** 時，溶液會由 **藍色** 變為 **無色**。"
   },
   {
     id: 'cobalt',
@@ -231,6 +299,29 @@ const indicatorsData = [
   }
 ];
 
+const s3QuizIndicatorIds = new Set([
+  'iodine',
+  'urine_glucose_paper',
+  'filter_paper_lipid',
+  'urine_protein_paper',
+  'dcpip'
+]);
+
+const quizLevelOptions = [
+  {
+    id: 's2',
+    label: 'S2',
+    zh: '中二',
+    items: indicatorsData.filter(item => !s3QuizIndicatorIds.has(item.id) || item.id === 'iodine')
+  },
+  {
+    id: 's3',
+    label: 'S3',
+    zh: '中三',
+    items: indicatorsData.filter(item => s3QuizIndicatorIds.has(item.id))
+  }
+];
+
 // --- VIRTUAL LAB GROUPING LOGIC ---
 const labGroups = [
   {
@@ -262,6 +353,30 @@ const labGroups = [
     name: { en: 'Iodine Solution', zh: '碘液' },
     labType: 'spot',
     tests: indicatorsData.filter(i => i.id === 'iodine')
+  },
+  {
+    id: 'urine_glucose_paper',
+    name: { en: 'Glucose Test Paper', zh: '尿糖試紙' },
+    labType: 'paper',
+    tests: indicatorsData.filter(i => i.id === 'urine_glucose_paper')
+  },
+  {
+    id: 'filter_paper_lipid',
+    name: { en: 'Filter Paper Spot Test', zh: '濾紙點滴試驗' },
+    labType: 'filter_paper',
+    tests: indicatorsData.filter(i => i.id === 'filter_paper_lipid')
+  },
+  {
+    id: 'urine_protein_paper',
+    name: { en: 'Protein Test Paper', zh: '尿蛋白試紙' },
+    labType: 'paper',
+    tests: indicatorsData.filter(i => i.id === 'urine_protein_paper')
+  },
+  {
+    id: 'dcpip',
+    name: { en: 'DCPIP Solution', zh: 'DCPIP 溶液' },
+    labType: 'beaker',
+    tests: indicatorsData.filter(i => i.id === 'dcpip')
   },
   {
     id: 'cobalt',
@@ -303,6 +418,21 @@ const ParseSentence = ({ text }) => {
     return <span key={i} className="text-slate-800">{part}</span>;
   });
 };
+
+const LevelSelector = ({ selectedLevel, onSelectLevel }) => (
+  <div className="grid grid-cols-2 gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+    {quizLevelOptions.map(level => (
+      <button
+        key={level.id}
+        onClick={() => onSelectLevel(level.id)}
+        className={`rounded-xl py-3 px-4 font-black transition-all border text-base sm:text-lg ${selectedLevel === level.id ? 'bg-white text-blue-700 border-blue-200 shadow-sm' : 'text-slate-500 border-transparent hover:bg-white/60'}`}
+      >
+        <span className="block">{level.label}</span>
+        <span className="block text-[10px] sm:text-xs font-medium opacity-70 mt-0.5">{level.zh}</span>
+      </button>
+    ))}
+  </div>
+);
 
 const playPopSound = () => {
   try {
@@ -659,6 +789,30 @@ function LabApparatus({ type, color, topColor, isReacting, isReacted, activeTest
     );
   }
 
+  if (type === 'filter_paper') {
+    return (
+      <div className="relative w-72 h-48 sm:w-96 sm:h-60 flex items-center justify-center mb-8 perspective-1000 scale-90 sm:scale-100">
+        <Pipette activeTop="top-[-40px] sm:top-[-60px]" fallAnim="animate-[fall-spot_1.2s_ease-in_forwards]" />
+        <div className="relative w-64 h-36 sm:w-80 sm:h-44 bg-slate-100 shadow-[0_18px_30px_rgba(0,0,0,0.45),inset_0_2px_5px_white] border border-slate-300 flex items-center justify-center transform rotateX-[15deg] z-20 overflow-hidden">
+          <div className="absolute inset-0 opacity-40" style={{
+            backgroundImage: 'linear-gradient(90deg, rgba(148,163,184,0.25) 1px, transparent 1px), linear-gradient(rgba(148,163,184,0.22) 1px, transparent 1px)',
+            backgroundSize: '18px 18px'
+          }}></div>
+          <div className={`relative w-28 h-20 sm:w-36 sm:h-24 rounded-[50%] transition-all duration-1000 ease-out border border-amber-200/30 ${isReacting || isReacted ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+            style={{
+              background: 'radial-gradient(circle, rgba(251,191,36,0.26) 0%, rgba(251,191,36,0.16) 48%, rgba(255,255,255,0.08) 72%)',
+              boxShadow: 'inset 0 0 18px rgba(255,255,255,0.45), 0 0 20px rgba(251,191,36,0.12)',
+              backdropFilter: 'brightness(1.2)'
+            }}
+          >
+            <div className="absolute inset-2 rounded-[50%] border border-white/40"></div>
+          </div>
+          <div className="absolute bottom-3 right-4 text-slate-400 text-xs font-bold tracking-widest">FILTER PAPER</div>
+        </div>
+      </div>
+    );
+  }
+
   if (type === 'gas_tube') {
     return (
       <div className="relative w-28 h-56 sm:w-32 sm:h-64 flex items-end justify-center mb-8 scale-90 sm:scale-100">
@@ -754,28 +908,38 @@ function LabApparatus({ type, color, topColor, isReacting, isReacted, activeTest
 // --- QUIZ AND REVISION MODE ---
 
 function RevisionView() {
+  const [selectedStudyLevel, setSelectedStudyLevel] = useState('s3');
+  const activeStudyLevel = quizLevelOptions.find(level => level.id === selectedStudyLevel) || quizLevelOptions[0];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-      {indicatorsData.map((item) => (
+    <div className="space-y-5 sm:space-y-6">
+      <div className="max-w-xl mx-auto">
+        <LevelSelector selectedLevel={selectedStudyLevel} onSelectLevel={setSelectedStudyLevel} />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+      {activeStudyLevel.items.map((item) => (
         <div key={item.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex h-20 sm:h-24 w-full relative">
-            <div className={`flex-1 flex flex-col items-center justify-center font-semibold text-shadow-sm text-sm sm:text-base ${['limewater'].includes(item.id) ? 'text-slate-700' : 'text-white/90'}`} style={{ backgroundColor: item.originalColor.hex }}>
-              <span className={`text-center px-1 ${['limewater'].includes(item.id) ? 'bg-white/60 rounded-full px-2 py-0.5 mt-1' : ''}`}>{item.originalColor.en}</span>
+            <div className={`flex-1 flex flex-col items-center justify-center font-semibold text-shadow-sm text-sm sm:text-base ${['limewater', 'filter_paper_lipid'].includes(item.id) ? 'text-slate-700' : 'text-white/90'}`} style={{ backgroundColor: item.originalColor.hex }}>
+              <span className={`text-center px-1 ${['limewater', 'filter_paper_lipid'].includes(item.id) ? 'bg-white/60 rounded-full px-2 py-0.5 mt-1' : ''}`}>{item.originalColor.en}</span>
               <span className="text-[10px] sm:text-xs opacity-80">{item.originalColor.zh}</span>
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-1 sm:p-1.5 shadow-md z-10">
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
             </div>
-            <div className={`flex-1 flex flex-col items-center justify-center font-semibold text-shadow-sm text-sm sm:text-base ${['limewater', 'burning_splint'].includes(item.id) ? 'text-slate-700' : 'text-white/90'}`} style={{ backgroundColor: item.finalColor.hex }}>
-              <span className={`text-center px-1 ${['limewater', 'burning_splint'].includes(item.id) ? 'bg-black/10 rounded-full px-2 py-0.5 mt-1' : ''}`}>{item.finalColor.en}</span>
+            <div className={`flex-1 flex flex-col items-center justify-center font-semibold text-shadow-sm text-sm sm:text-base ${['limewater', 'burning_splint', 'filter_paper_lipid', 'dcpip'].includes(item.id) ? 'text-slate-700' : 'text-white/90'}`} style={{ backgroundColor: item.finalColor.hex }}>
+              <span className={`text-center px-1 ${['limewater', 'burning_splint', 'filter_paper_lipid', 'dcpip'].includes(item.id) ? 'bg-black/10 rounded-full px-2 py-0.5 mt-1' : ''}`}>{item.finalColor.en}</span>
               <span className="text-[10px] sm:text-xs opacity-80">{item.finalColor.zh}</span>
             </div>
           </div>
 
           <div className="p-4 sm:p-5">
-            <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-1">{item.name.en}</h3>
-            <p className="text-xs sm:text-sm font-medium text-blue-600 mb-3 sm:mb-4 bg-blue-50 inline-block px-3 py-1 rounded-full">
-              Tests for: {item.substance.en}
+            <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-0.5">{item.name.en}</h3>
+            <p className="text-xs sm:text-sm font-semibold text-slate-500 mb-2">{item.name.zh}</p>
+            <p className="text-xs sm:text-sm font-medium text-blue-600 mb-3 sm:mb-4 bg-blue-50 inline-flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-1.5 px-3 py-1.5 rounded-xl">
+              <span>Tests for: {item.substance.en}</span>
+              <span className="text-[10px] sm:text-xs text-blue-500">檢測：{item.substance.zh}</span>
             </p>
 
             <div className="bg-amber-50 p-3 rounded-xl border border-amber-200 mb-3">
@@ -792,22 +956,26 @@ function RevisionView() {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 }
 
 function QuizView() {
   const [quizState, setQuizState] = useState('start');
+  const [selectedQuizLevel, setSelectedQuizLevel] = useState('s3');
   const [questions, setQuestions] = useState([]);
   const [currentQIndex, setCurrentQIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
+  const activeQuizLevel = quizLevelOptions.find(level => level.id === selectedQuizLevel) || quizLevelOptions[0];
 
   const generateQuestions = () => {
-    const shuffled = [...indicatorsData].sort(() => 0.5 - Math.random()).slice(0, 5);
+    const quizPool = activeQuizLevel.items;
+    const shuffled = [...quizPool].sort(() => 0.5 - Math.random()).slice(0, Math.min(5, quizPool.length));
     const generatedQs = shuffled.map(indicator => {
-      const allFinalColors = Array.from(new Set(indicatorsData.map(i => JSON.stringify(i.finalColor)))).map(str => JSON.parse(str));
+      const allFinalColors = Array.from(new Set(quizPool.map(i => JSON.stringify(i.finalColor)))).map(str => JSON.parse(str));
       let options = allFinalColors.filter(c => c.en !== indicator.finalColor.en).sort(() => 0.5 - Math.random()).slice(0, 3);
       options.push(indicator.finalColor);
       options = options.sort(() => 0.5 - Math.random());
@@ -835,8 +1003,11 @@ function QuizView() {
           <HelpCircle className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-800 mb-1 sm:mb-2">Lab Quiz</h2>
-        <p className="text-slate-500 font-medium mb-6 sm:mb-8 text-xs sm:text-base">測驗模式</p>
+        <p className="text-slate-500 font-medium mb-6 sm:mb-8 text-xs sm:text-base">實驗測驗</p>
         <p className="text-slate-600 mb-6 sm:mb-8 text-sm sm:text-lg">Test your memory! Predict the final observation.<br/><span className="text-[10px] sm:text-sm text-slate-500 block mt-1 sm:mt-2">(測試你的記憶力！預測不同物質測試後的最終觀察結果。)</span></p>
+        <div className="mb-6 sm:mb-8">
+          <LevelSelector selectedLevel={selectedQuizLevel} onSelectLevel={setSelectedQuizLevel} />
+        </div>
         <button onClick={generateQuestions} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 text-base sm:text-lg w-full sm:w-auto">Start Quiz <span className="text-blue-200 text-xs sm:text-sm ml-1 sm:ml-2 font-normal">(開始測驗)</span></button>
       </div>
     );
@@ -847,8 +1018,9 @@ function QuizView() {
       <div className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-10 text-center max-w-xl mx-auto mt-4 sm:mt-8">
         <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 bg-green-50 border-4 border-green-100"><span className="text-4xl sm:text-5xl">🏆</span></div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-800 mb-1 sm:mb-2">Quiz Complete!</h2>
+        <p className="text-slate-500 font-medium mb-4 text-xs sm:text-base">測驗完成</p>
         <div className="bg-slate-50 rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 border border-slate-100">
-          <p className="text-slate-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-1 sm:mb-2">Final Score</p>
+          <p className="text-slate-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-1 sm:mb-2">Final Score <span className="tracking-normal font-medium normal-case">最終得分</span></p>
           <p className="text-4xl sm:text-5xl font-black text-blue-600">{score} <span className="text-xl sm:text-2xl text-slate-400">/ {questions.length}</span></p>
         </div>
         <button onClick={generateQuestions} className="flex items-center justify-center gap-2 sm:gap-3 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all shadow-md active:scale-95 text-base sm:text-lg"><RefreshCw className="w-5 h-5 sm:w-6 sm:h-6" /> Play Again <span className="text-slate-400 text-xs sm:text-sm font-normal">(再玩一次)</span></button>
@@ -862,14 +1034,22 @@ function QuizView() {
     <div className="max-w-3xl mx-auto">
       <div className="mb-4 sm:mb-8">
         <div className="flex justify-between items-end mb-1 sm:mb-2">
-          <span className="font-bold text-slate-700 text-sm sm:text-base">Question {currentQIndex + 1} <span className="text-slate-400 font-normal text-xs sm:text-sm ml-1">/ {questions.length}</span></span>
-          <span className="font-bold text-blue-600 bg-blue-50 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Score: {score}</span>
+          <span className="font-bold text-slate-700 text-sm sm:text-base">
+            <span className="inline-flex items-center justify-center bg-slate-900 text-white rounded-full px-2 py-0.5 text-[10px] sm:text-xs mr-2 align-middle">{activeQuizLevel.label}</span>
+            Question {currentQIndex + 1} <span className="text-slate-500 font-medium text-xs sm:text-sm ml-1">題目 {currentQIndex + 1}</span> <span className="text-slate-400 font-normal text-xs sm:text-sm ml-1">/ {questions.length}</span>
+          </span>
+          <span className="font-bold text-blue-600 bg-blue-50 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Score: {score} <span className="font-medium text-blue-500">得分：{score}</span></span>
         </div>
         <div className="w-full bg-slate-200 h-1.5 sm:h-2 rounded-full overflow-hidden"><div className="bg-blue-600 h-full transition-all duration-300" style={{ width: `${((currentQIndex) / questions.length) * 100}%` }}></div></div>
       </div>
       <div className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="bg-slate-50 p-4 sm:p-8 border-b border-slate-200">
-          <h3 className="text-base sm:text-xl font-medium text-slate-700 leading-relaxed text-center">What is the final observation when you test <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg mx-1 sm:mx-2 border border-blue-200">{ind.substance.en}</span> using <span className="inline-block bg-purple-100 text-purple-800 font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg mx-1 sm:mx-2 border border-purple-200">{ind.name.en}</span>?</h3>
+          <h3 className="text-base sm:text-xl font-medium text-slate-700 leading-relaxed text-center">
+            What is the final observation when you test <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg mx-1 sm:mx-2 border border-blue-200">{ind.substance.en}</span> using <span className="inline-block bg-purple-100 text-purple-800 font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg mx-1 sm:mx-2 border border-purple-200">{ind.name.en}</span>?
+            <span className="block text-xs sm:text-base text-slate-500 mt-3 leading-relaxed">
+              使用 <span className="inline-block bg-purple-50 text-purple-700 font-bold px-2 py-0.5 rounded-lg border border-purple-100">{ind.name.zh}</span> 檢測 <span className="inline-block bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded-lg border border-blue-100">{ind.substance.zh}</span> 時，最終觀察結果是甚麼？
+            </span>
+          </h3>
         </div>
         <div className="p-4 sm:p-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -902,7 +1082,7 @@ function QuizView() {
                 </div>
               </div>
               <button onClick={() => currentQIndex < questions.length - 1 ? (setCurrentQIndex(currentQIndex + 1), setIsAnswered(false), setSelectedAnswer(null)) : setQuizState('end')} className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 sm:py-5 rounded-xl transition-all flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-lg shadow-md active:scale-95">
-                {currentQIndex < questions.length - 1 ? 'Next Question' : 'View Results'} <ArrowRight className="w-4 h-4 sm:w-6 sm:h-6" />
+                {currentQIndex < questions.length - 1 ? 'Next Question (下一題)' : 'View Results (查看結果)'} <ArrowRight className="w-4 h-4 sm:w-6 sm:h-6" />
               </button>
             </div>
           )}
