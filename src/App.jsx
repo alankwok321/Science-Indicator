@@ -113,7 +113,7 @@ const indicatorsData = [
   {
     id: 'urine_glucose_paper',
     labType: 'paper',
-    name: { en: 'Urine Glucose Test Paper', zh: '尿糖試紙' },
+    name: { en: 'Glucose Test Paper', zh: '尿糖試紙' },
     substance: { en: 'Glucose', zh: '葡萄糖' },
     action: { en: 'Dip', zh: '浸入' },
     buttonText: { en: 'Dip in Glucose', zh: '浸入葡萄糖' },
@@ -121,10 +121,10 @@ const indicatorsData = [
     finalColor: { en: 'Brown', zh: '棕色', hex: '#92400e', topHex: '#b45309' },
     dropColor: 'rgba(255,255,255,0.45)',
     explanation: {
-      en: 'Urine glucose test paper is used to test for glucose. With Diastix, glucose changes the test end from green to brown.',
+      en: 'Glucose can be tested using glucose test paper. The colour of the test end of glucose test paper changes from green to brown when glucose is present.',
       zh: '尿糖試紙可用來檢測葡萄糖。以 Diastix 為例，葡萄糖會使測試端由綠色變為棕色。'
     },
-    examEn: "When **urine glucose test paper** is dipped into a sample containing **glucose**, the test end changes from **green** to **brown**.",
+    examEn: "When **glucose** is present, the colour of the test end of **glucose test paper** changes from **green** to **brown**.",
     examZh: "當把 **尿糖試紙** 浸入含有 **葡萄糖** 的樣本中，測試端會由 **綠色** 變為 **棕色**。"
   },
   {
@@ -138,27 +138,27 @@ const indicatorsData = [
     finalColor: { en: 'Permanent Translucent Spot', zh: '恆久半透明點', hex: '#dbeafe', topHex: '#eff6ff' },
     dropColor: 'rgba(250,204,21,0.75)',
     explanation: {
-      en: 'Filter paper is used to test for lipids. Lipids leave a permanent translucent spot on the paper after standing.',
+      en: 'Lipid can be tested using filter paper. Lipid leaves a permanent translucent spot on the filter paper.',
       zh: '濾紙可用來檢測脂質。脂質會在濾紙上留下恆久的半透明點。'
     },
-    examEn: "When a sample containing **lipid** is added to **filter paper**, it leaves a **permanent translucent spot**.",
+    examEn: "When **lipid** is present, a **permanent translucent spot** is left on the **filter paper**.",
     examZh: "當把含有 **脂質** 的樣本加在 **濾紙** 上，紙上會留下 **恆久的半透明點**。"
   },
   {
     id: 'urine_protein_paper',
     labType: 'paper',
-    name: { en: 'Urine Protein Test Paper', zh: '尿蛋白試紙' },
-    substance: { en: 'Protein', zh: '蛋白質' },
+    name: { en: 'Protein Test Paper', zh: '尿蛋白試紙' },
+    substance: { en: 'Proteins', zh: '蛋白質' },
     action: { en: 'Dip', zh: '浸入' },
     buttonText: { en: 'Dip in Protein', zh: '浸入蛋白質' },
     originalColor: { en: 'Yellow', zh: '黃色', hex: '#fde047', topHex: '#fef08a' },
     finalColor: { en: 'Green', zh: '綠色', hex: '#22c55e', topHex: '#4ade80' },
     dropColor: 'rgba(255,255,255,0.45)',
     explanation: {
-      en: 'Urine protein test paper is used to test for protein. With Albustix, protein changes the test end from yellow to green.',
+      en: 'Protein can be tested using protein test paper. The colour of the test end of protein test paper changes from yellow to green when protein is present.',
       zh: '尿蛋白試紙可用來檢測蛋白質。以 Albustix 為例，蛋白質會使測試端由黃色變為綠色。'
     },
-    examEn: "When **urine protein test paper** is dipped into a sample containing **protein**, the test end changes from **yellow** to **green**.",
+    examEn: "When **protein** is present, the colour of the test end of **protein test paper** changes from **yellow** to **green**.",
     examZh: "當把 **尿蛋白試紙** 浸入含有 **蛋白質** 的樣本中，測試端會由 **黃色** 變為 **綠色**。"
   },
   {
@@ -172,10 +172,10 @@ const indicatorsData = [
     finalColor: { en: 'Colourless', zh: '無色', hex: 'rgba(255,255,255,0.12)', topHex: 'rgba(255,255,255,0.25)' },
     dropColor: 'rgba(255,255,255,0.55)',
     explanation: {
-      en: 'DCPIP solution is a blue dye used to test for vitamin C. Vitamin C decolourizes DCPIP, changing it from blue to colourless.',
+      en: 'Vitamin C can be tested using DCPIP solution. The colour of DCPIP solution changes from blue to colourless when vitamin C is present.',
       zh: 'DCPIP 溶液是一種藍色染劑，可用來檢測維生素C。維生素C會使 DCPIP 溶液褪色，由藍色變為無色。'
     },
-    examEn: "When **vitamin C** is added to **DCPIP solution**, the solution changes from **blue** to **colourless**.",
+    examEn: "When **vitamin C** is present, the colour of **DCPIP solution** changes from **blue** to **colourless**.",
     examZh: "當把 **維生素C** 加入 **DCPIP 溶液** 時，溶液會由 **藍色** 變為 **無色**。"
   },
   {
@@ -356,7 +356,7 @@ const labGroups = [
   },
   {
     id: 'urine_glucose_paper',
-    name: { en: 'Urine Glucose Test Paper', zh: '尿糖試紙' },
+    name: { en: 'Glucose Test Paper', zh: '尿糖試紙' },
     labType: 'paper',
     tests: indicatorsData.filter(i => i.id === 'urine_glucose_paper')
   },
@@ -368,7 +368,7 @@ const labGroups = [
   },
   {
     id: 'urine_protein_paper',
-    name: { en: 'Urine Protein Test Paper', zh: '尿蛋白試紙' },
+    name: { en: 'Protein Test Paper', zh: '尿蛋白試紙' },
     labType: 'paper',
     tests: indicatorsData.filter(i => i.id === 'urine_protein_paper')
   },
